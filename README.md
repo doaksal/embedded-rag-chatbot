@@ -37,6 +37,7 @@ python3 -m venv .venv
 source .venv/bin/activate   # macOS / Linux
 .venv\Scripts\activate      # Windows
 
+Create Data Folder in your Python Project
 
 pip install -r requirements.txt
 
@@ -60,3 +61,4 @@ Projede kullanılan veritabanı, Türkiye'deki farklı hastanelere ait tıbbi ma
 - **Doğruluk:** Model, lokal veritabanından beslenerek daha güvenilir yanıtlar veriyor.  
 - **Offline kullanım:** İnternet bağlantısına ihtiyaç duymadan sistem çalışıyor; veriler lokal olarak saklanıyor.  
 - **Geniş kapsam:** Farklı hastanelerin verilerini kapsadığı için tek bir kaynağa bağlı kalmadan kapsamlı yanıt alabiliyorsunuz.
+- ** Parquet dosyalarını Data dosyası içerisine yerleştirililmesi gerekmektedir.
