@@ -1,2 +1,62 @@
-# embedded-rag-chatbot
-Medical question-answering system using embeddings, ChromaDB, and Gemini 2.0 Flash.
+CHAT_BOT/
+│
+├─ data/                       # Tıbbi makale parquet dosyaların burada olacak
+│   ├─ acibadem-00000-of-00001.parquet
+│   ├─ anadolusaglik-00000-of-00001.parquet
+│   └─ ... (diğer tüm hastane dosyaları)
+│
+├─ .env                        # API_KEY burada olacak
+├─ chat.py                      # Ana uygulama dosyası (sana verdiğim açıklamalı kod)
+├─ requirements.txt             # Proje bağımlılıkları
+└─ README.md                    # GitHub için proje açıklaması
+# DOA Medical Chat - Embedded RAG + Gemini 2.0 Flash
+
+**Geliştirici:** Doga  
+**Bootcamp:** Akbank Generative AI Bootcamp  
+
+## Proje Açıklaması
+Bu proje, lokal tıbbi makaleleri kullanarak embedding tabanlı retrieval yapar ve Google Gemini 2.0 Flash modeli ile akıllı yanıtlar üretir.  
+Sistem tamamen lokal veri üzerinde çalışır; internet bağlantısı sadece Gemini API çağrısı için gereklidir.  
+
+## Özellikler
+- Tıbbi makaleler `data/` klasöründen okunur.
+- SentenceTransformer ile embedding oluşturulur.
+- ChromaDB ile embedding’ler saklanır.
+- Kullanıcı sorusu ile ilgili en alakalı makaleler retrieval edilir.
+- Gemini 2.0 Flash modeli ile yanıt üretilir.
+- Terminal tabanlı basit chat arayüzü.
+
+## Kurulum
+1. Repo klonlanır:
+```bash
+
+git clone <repo-url>
+cd CHAT_BOT
+
+python3 -m venv .venv
+source .venv/bin/activate   # macOS / Linux
+.venv\Scripts\activate      # Windows
+
+
+pip install -r requirements.txt
+
+
+API_KEY=YOUR_GOOGLE_API_KEY
+
+
+
+python3 chat.py
+## Veritabanı ve Kullanıcıya Sağladığı Kolaylıklar
+
+Projede kullanılan veritabanı, Türkiye'deki farklı hastanelere ait tıbbi makaleleri içermektedir (Acıbadem, Anadolu Sağlık, Liv, Medicana vb.).  
+
+### Neden bu veritabanı?  
+- Gerçek ve çeşitli tıbbi içeriklerle modelin yanıtları güçlendiriliyor.  
+- Model yalnızca hayali ya da genel bilgilerle cevap vermiyor; lokal ve doğrulanabilir içerik üzerinden yanıt üretiyor.  
+- Kullanıcı, spesifik sağlık konularında hızlı ve doğru bilgiye ulaşabiliyor.  
+
+### Kullanıcıya sağladığı kolaylıklar  
+- **Hızlı erişim:** Sorulan soruya en ilgili makaleler retrieval yöntemiyle hemen çekiliyor.  
+- **Doğruluk:** Model, lokal veritabanından beslenerek daha güvenilir yanıtlar veriyor.  
+- **Offline kullanım:** İnternet bağlantısına ihtiyaç duymadan sistem çalışıyor; veriler lokal olarak saklanıyor.  
+- **Geniş kapsam:** Farklı hastanelerin verilerini kapsadığı için tek bir kaynağa bağlı kalmadan kapsamlı yanıt alabiliyorsunuz.
