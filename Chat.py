@@ -34,19 +34,10 @@ chat = model.start_chat(history=[])
 # Data klasöründeki tüm parquet dosyaları yüklenir
 print("📥 Dataset yükleniyor (lokal dosyalardan)...")
 files = {
-    "acibadem": "data/acibadem-00000-of-00001.parquet",
-    "anadolusaglik": "data/anadolusaglik-00000-of-00001.parquet",
     "atlas": "data/atlas-00000-of-00001.parquet",
     "baskentistanbul": "data/baskentistanbul-00000-of-00001.parquet",
     "bayindir": "data/bayindir-00000-of-00001.parquet",
-    "florence": "data/florence-00000-of-00001.parquet",
-    "guven": "data/guven-00000-of-00001.parquet",
-    "liv": "data/liv-00000-of-00001.parquet",
-    "medicalpark": "data/medicalpark-00000-of-00001.parquet",
-    "medicalpoint": "data/medicalpoint-00000-of-00001.parquet",
-    "medicana": "data/medicana-00000-of-00001.parquet",
     "medipol": "data/medipol-00000-of-00001.parquet",
-    "memorial": "data/memorial-00000-of-00001.parquet",
     "yeditepe": "data/yeditepe-00000-of-00001.parquet"
 }
 
