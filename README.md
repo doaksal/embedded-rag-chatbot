@@ -1,17 +1,24 @@
+# RAG Tabanlı Tıbbi Chatbot
+
+Bu proje, tıbbi makaleleri kullanarak sorulara cevap veren bir RAG (Retrieval-Augmented Generation) tabanlı chatbot uygulamasıdır.
+
 CHAT_BOT/
 │
-├─ data/                       # Tıbbi makale parquet dosyaların burada olacak
-│   ├─ acibadem-00000-of-00001.parquet
-│   ├─ anadolusaglik-00000-of-00001.parquet
-│   └─ ... (diğer tüm hastane dosyaları)
+├─ data/                       
+│   ├─ atlas-00000-of-00001.parquet
+│   ├─ baskentistanbul-00000-of-00001.parquet
+│   ├─ bayindir-00000-of-00001.parquet
+│   ├─ medipol-00000-of-00001.parquet
+│   └─ yeditepe-00000-of-00001.parquet
 │
 ├─ .env                        # API_KEY burada olacak
 ├─ chat.py                      # Ana uygulama dosyası (sana verdiğim açıklamalı kod)
 ├─ requirements.txt             # Proje bağımlılıkları
 └─ README.md                    # GitHub için proje açıklaması
+
 # DOA Medical Chat - Embedded RAG + Gemini 2.0 Flash
 
-**Geliştirici:** Doga  
+**Geliştirici:** Doga Koksal 
 **Bootcamp:** Akbank Generative AI Bootcamp  
 
 ## Proje Açıklaması
