@@ -8,7 +8,7 @@
 # ChromaDB ile vektör veritabanı kurulmuş ve embedding’ler saklanmıştır.
 
 import os
-from dotenv import load_dotenv
+
 import google.generativeai as genai
 from datasets import load_dataset
 from sentence_transformers import SentenceTransformer
