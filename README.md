@@ -62,3 +62,7 @@ Projede kullanılan veritabanı, Türkiye'deki farklı hastanelere ait tıbbi ma
 - **Offline kullanım:** İnternet bağlantısına ihtiyaç duymadan sistem çalışıyor; veriler lokal olarak saklanıyor.  
 - **Geniş kapsam:** Farklı hastanelerin verilerini kapsadığı için tek bir kaynağa bağlı kalmadan kapsamlı yanıt alabiliyorsunuz.
 - ** Parquet dosyalarını Data dosyası içerisine yerleştirililmesi gerekmektedir.
+
+
+**Dataset:** [umutertugrul/turkish-hospital-medical-articles](https://huggingface.co/datasets/umutertugrul/turkish-hospital-medical-articles)
+
