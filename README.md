@@ -11,10 +11,16 @@ CHAT_BOT/
 │   ├─ medipol-00000-of-00001.parquet
 │   └─ yeditepe-00000-of-00001.parquet
 │
-├─ .env                        # API_KEY burada olacak
-├─ chat.py                      # Ana uygulama dosyası (sana verdiğim açıklamalı kod)
-├─ requirements.txt             # Proje bağımlılıkları
-└─ README.md                    # GitHub için proje açıklaması
+├─ .env                  
+├─ chat.py                 
+├─ requirement.txt 
+├─ atlas-00000-of-00001.parquet
+├─ baskentistanbul-00000-of-00001.parquet
+├─ bayindir-00000-of-00001.parquet
+├─ medipol-00000-of-00001.parquet
+├─ yeditepe-00000-of-00001.parquet
+├─ LICENSE
+└─ README.md                 
 
 # DOA Medical Chat - Embedded RAG + Gemini 2.0 Flash
 
