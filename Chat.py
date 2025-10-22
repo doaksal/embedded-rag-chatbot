@@ -1,5 +1,4 @@
 # Chat.py
-import os
 import streamlit as st
 import google.generativeai as genai
 from datasets import load_dataset
@@ -7,14 +6,12 @@ from sentence_transformers import SentenceTransformer
 import chromadb
 
 # ---------------------------
-# 1️⃣ API Key yükleme
+# 1️⃣ API Key
 # ---------------------------
-API = st.secrets["general"]["API_KEY"]  # secrets.toml’dan alıyoruz
-if not API:
-    st.error("API_KEY bulunamadı! secrets.toml kontrol et.")
-    st.stop()
-
+API = st.secrets["API_KEY"]
 genai.configure(api_key=API)
+
+# Gemini 2.0 Flash modeli
 model = genai.GenerativeModel("gemini-2.0-flash")
 chat = model.start_chat(history=[])
 
@@ -23,7 +20,6 @@ chat = model.start_chat(history=[])
 # ---------------------------
 @st.cache_data
 def load_local_dataset():
-    # Parquet dosyaları repoda direkt
     files = {
         "atlas": "atlas-00000-of-00001.parquet",
         "baskentistanbul": "baskentistanbul-00000-of-00001.parquet",
@@ -32,11 +28,13 @@ def load_local_dataset():
         "yeditepe": "yeditepe-00000-of-00001.parquet"
     }
     dataset_raw = load_dataset("parquet", data_files=files)
+    
     dataset = []
     titles = []
     for split in dataset_raw:
         dataset += dataset_raw[split][:3]["text"]
         titles += ["Makale " + str(i+1) for i in range(len(dataset_raw[split][:3]["text"]))]
+    
     return dataset, titles
 
 dataset, titles = load_local_dataset()
