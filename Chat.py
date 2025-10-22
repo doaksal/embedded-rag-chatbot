@@ -1,4 +1,4 @@
-# Chat.py
+# chat_streamlit.py
 import os
 import streamlit as st
 from dotenv import load_dotenv
@@ -10,19 +10,21 @@ import chromadb
 # ---------------------------
 # 1️⃣ API Key yükleme
 # ---------------------------
-load_dotenv()  # local .env için
+# Local .env varsa yükle
+load_dotenv()
 API = os.getenv("API_KEY") or st.secrets["general"]["API_KEY"]
 
 if not API:
     st.error("API_KEY bulunamadı! .env veya secrets.toml kontrol et.")
     st.stop()
 
+# Gemini 2.0 Flash yapılandırması
 genai.configure(api_key=API)
 model = genai.GenerativeModel("gemini-2.0-flash")
 chat = model.start_chat(history=[])
 
 # ---------------------------
-# 2️⃣ Dataset yükleme
+# 2️⃣ Lokal dataset yükleme
 # ---------------------------
 @st.cache_data
 def load_local_dataset():
@@ -81,7 +83,7 @@ def retrieve_context(query, top_k=5):
     return summarized_docs
 
 # ---------------------------
-# 5️⃣ Streamlit arayüzü
+# 5️⃣ Streamlit Arayüz
 # ---------------------------
 st.title("💬 DOA Medical Chat")
 
