@@ -1,7 +1,6 @@
-# chat_streamlit.py
+# Chat.py
 import os
 import streamlit as st
-from dotenv import load_dotenv
 import google.generativeai as genai
 from datasets import load_dataset
 from sentence_transformers import SentenceTransformer
@@ -10,30 +9,27 @@ import chromadb
 # ---------------------------
 # 1️⃣ API Key yükleme
 # ---------------------------
-# Local .env varsa yükle
-load_dotenv()
-API = os.getenv("API_KEY") or st.secrets["general"]["API_KEY"]
-
+API = st.secrets["general"]["API_KEY"]  # secrets.toml’dan alıyoruz
 if not API:
-    st.error("API_KEY bulunamadı! .env veya secrets.toml kontrol et.")
+    st.error("API_KEY bulunamadı! secrets.toml kontrol et.")
     st.stop()
 
-# Gemini 2.0 Flash yapılandırması
 genai.configure(api_key=API)
 model = genai.GenerativeModel("gemini-2.0-flash")
 chat = model.start_chat(history=[])
 
 # ---------------------------
-# 2️⃣ Lokal dataset yükleme
+# 2️⃣ Dataset yükleme
 # ---------------------------
 @st.cache_data
 def load_local_dataset():
+    # Parquet dosyaları repoda direkt
     files = {
-        "atlas": "data/atlas-00000-of-00001.parquet",
-        "baskentistanbul": "data/baskentistanbul-00000-of-00001.parquet",
-        "bayindir": "data/bayindir-00000-of-00001.parquet",
-        "medipol": "data/medipol-00000-of-00001.parquet",
-        "yeditepe": "data/yeditepe-00000-of-00001.parquet"
+        "atlas": "atlas-00000-of-00001.parquet",
+        "baskentistanbul": "baskentistanbul-00000-of-00001.parquet",
+        "bayindir": "bayindir-00000-of-00001.parquet",
+        "medipol": "medipol-00000-of-00001.parquet",
+        "yeditepe": "yeditepe-00000-of-00001.parquet"
     }
     dataset_raw = load_dataset("parquet", data_files=files)
     dataset = []
@@ -83,7 +79,7 @@ def retrieve_context(query, top_k=5):
     return summarized_docs
 
 # ---------------------------
-# 5️⃣ Streamlit Arayüz
+# 5️⃣ Streamlit arayüzü
 # ---------------------------
 st.title("💬 DOA Medical Chat")
 
